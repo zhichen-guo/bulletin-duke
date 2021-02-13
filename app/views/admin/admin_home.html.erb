@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="grey-background">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    </head>
+
+    <body>
+
+    <!-- navigation bar -->
+    <%= render "layouts/navbar" %>
+
+    <div class="tabs is-right" style="padding-bottom: 0; margin-bottom: 0;">
+    <h1 class="admin-name"> <%= current_user.name %> </h1>
+        <ul class="custom-admin-nav">
+            <li><a class="admin-nav-item admin-nav-active" id="stats-tab"> stats </a></li>
+            <li><a class="admin-nav-item admin-nav-inactive" id="requests-tab"> requests </a></li>
+            <li><a class="admin-nav-item admin-nav-inactive" id="orgs-tab"> organizations </a></li>
+            <li><a class="admin-nav-item admin-nav-inactive" id="goals-tab"> challenges </a></li>
+        </ul>
+    </div>
+
+    <!--THIS IS WHERE THE STATS START-->
+    <div class="columns" style="padding-top: 0;">
+        <div class="column admin-profile">
+            <div id="tab-display">
+                <%= render partial: 'stat'%>
+            </div>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-item button sign-in-button is-hidden-tablet'  %>
+        </div>
+    </div>
+
+    <% if user_signed_in? %>
+        <div>
+            <a role="button" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+        </div>
+    <% end %>
+    </body>
+</html>

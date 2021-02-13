@@ -1,0 +1,220 @@
+//STYLESHEET FOR THE CUSTOMIZE INTERFACE PAGE FROM THE FIRST BUILD UNTIL AN INTERFACE
+//IS FIRST CREATED. THIS INCLUDES STYLING FOR THE INPUT LABELS, INPUTS, IMAGES,
+//AND TEXT.
+//THIS STYLESHEET IS ALSO USED FOR THE COMPLEMENTARY EDIT INTERFACE FORM ON THE
+//ADMIN HOMEPAGE ONCE AN INTERFACE HAS BEEN CREATED AND NEEDS TO BE EDITED.
+//AUTHOR: HERLEEN KAUR
+
+// Place all the styles related to the interface forms here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+.header-bar {
+    padding: 1.0rem !important;
+    font-size: 25px !important;
+    color: white !important;
+    margin-bottom: 0 !important;
+    background-color: $main-color;
+}
+.header-steps {
+    float: right;
+}
+.custom-interface{
+    padding: 2.5rem !important;
+    background-color: white;
+    margin: 12px !important;
+}
+
+@mixin interface-custom-p($fontColor, $size, $weight) {
+    font-family: $family-secondary;
+    color: $fontColor !important;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+.custom-text{
+    @include interface-custom-p(black, 20px, 300);
+}
+.custom-blue{
+    @include interface-custom-p($main-color, 20px, 700);
+}
+.custom-pink{
+    @include interface-custom-p($accent-color, 20px, 700);
+}
+.custom-light-blue{
+    @include interface-custom-p($secondary-color, 20px, 700);
+}
+.custom-heading{
+    @include interface-custom-p($main-color, 25px, 700);
+
+}
+.custom-description{
+    @include interface-custom-p($grey-extra-dark, 14px, 300);
+}
+.custom-description-bold{
+    @include interface-custom-p($grey-extra-dark, 14px, 700);
+}
+
+.input-label {
+    @include interface-custom-p($black, 16px, 300);
+    float: left;
+}
+.input-label-bold {
+    @include interface-custom-p($main-color, 16px, 700);
+    float: left;
+}
+.input-label-pink {
+    font-family: $family-secondary;
+    color: $accent-color !important;
+    font-size: 16px;
+    font-weight: 700;
+}
+.custom-control {
+    width: 35% !important;
+    margin-bottom: 5px !important;
+}
+.custom-tagline {
+    width: 50% !important;
+    margin-bottom: 5px !important;
+}
+.custom-address {
+    width: 30%;
+    margin-bottom: 5px !important;
+}
+.custom-file {
+    margin-bottom: 5px !important;
+}
+.custom-image-border {
+    border: 3px solid $grey-light;
+    display: block;
+}
+
+.admin-plus, %add-button {
+    font-size: 30px;
+    color: $secondary-color;
+
+    &:hover {
+        cursor: pointer;
+        color: rgba( $secondary-color, .9);
+    }
+}
+.admin-cancel, %cancel-button{
+    font-size: 30px;
+    color: $accent-color;
+    float: right !important;
+    margin-top: 40px;
+
+    &:hover {
+        cursor: pointer;
+        color: rgba( $accent-color, .9);
+    }
+}
+.address-plus {
+    @extend %add-button;
+}
+.address-cancel {
+    @extend %cancel-button;
+}
+.custom-next-arrow {
+    font-size: 25px;
+    background-color: $main-color;
+    color: $white;
+    border-radius: 4px;
+
+    float: right;
+    padding: 0 15px 0 15px;
+
+    &:hover {
+        cursor: pointer;
+        color: $secondary-color;
+    }
+}
+.custom-back-arrow {
+    font-size: 25px;
+    color: $secondary-color;
+    float: left;
+
+    &:hover {
+        cursor: pointer;
+        color: rgba( $secondary-color, .9);
+    }
+}
+.time-zone-label {
+    margin-right: 10px;
+}
+#facebookauth_fields {
+    display: none;
+    padding-top: 5px;
+    padding-left: 21px;
+}
+#googleauth_fields {
+    display: none;
+    padding-top: 5px;
+    padding-left: 21px;
+}
+.auth-label {
+    font-family: $family-secondary;
+    color: $main-color !important;
+    padding-left: 5px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#custom-address-2 {
+    border-top: 2px solid $grey-light;
+    display: none;
+}
+#custom-address-3 {
+    border-top: 2px solid $grey-light;
+    display: none;
+}
+
+//BELOW ARE STYLINGS FOR ALL THE ERROR MESSAGES!
+//ADDED BY: ZHICHEN GUO
+#hex-invalid-1, %color-error-message{
+    display: none;
+    background: #ffadad;
+    padding-top: 10px;
+    margin-top: -15px;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+}
+
+#hex-invalid-2 {
+    @extend %color-error-message;
+}
+#hex-invalid-3 {
+    @extend %color-error-message;
+}
+#email-empty-1 {
+    @extend %color-error-message;
+}
+#email-invalid-1 {
+    @extend %color-error-message;
+}
+#name-empty-1 {
+    @extend %color-error-message;
+}
+#inst-empty {
+    @extend %color-error-message;
+}
+#fb-id-empty {
+    @extend %color-error-message;
+}
+#fb-secret-empty {
+    @extend %color-error-message;
+}
+#google-id-empty {
+    @extend %color-error-message;
+}
+#google-secret-empty {
+    @extend %color-error-message;
+}
+#fb-url-empty {
+    @extend %color-error-message;
+}
+#google-url-empty {
+    @extend %color-error-message;
+}

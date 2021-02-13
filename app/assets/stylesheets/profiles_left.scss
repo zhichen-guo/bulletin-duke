@@ -1,0 +1,224 @@
+//STYLES FOR LEFT COLUMN OF ORGANIZATION AND VOLUNTEER PROFILE
+//AUTHOR: ZHICHEN GUO AND HERLEEN KAUR
+
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+.column-profile-left {
+    padding: 1.5rem 1.5rem 2.0rem 1.5rem !important;
+    background-color: white;
+    margin: 20px;
+
+    .profile-title {
+        background-color: $main-color;
+        color: $white;
+        padding: 0 10px 10px 10px;
+        font-family: $family-primary;
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .settings-icon {
+        color: white !important;
+        float: right;
+        opacity: 0.75;
+
+        &:hover {
+            color: $secondary-color !important;
+            cursor: pointer;
+        }
+    }
+
+    .profile-contact {
+        text-align: center;
+        font-family: $family-primary;
+        color: $main-color;
+        font-size: 15px;
+        font-weight: 600;
+        padding-top: 10px;
+    }
+    .profile-description {
+        text-align: center;
+        font-family: $family-secondary;
+        font-size: 15px;
+        padding-top: 10px;
+        color: black;
+        *{
+           font-family: $family-secondary !important;
+        }
+    }
+    .profile-columns {
+        padding-top: 20px;
+
+        .profile-left-info {
+            font-family: $family-secondary;
+            font-size: 15px;
+            color: black;
+            font-weight: 600;
+            line-height: 200%;
+        }
+        .profile-right-info {
+            font-family: $family-secondary;
+            font-size: 15px;
+            color: black;
+            font-weight: normal;
+            line-height: 200%;
+        }
+        .profile-right-info-hyperlink {
+            font-family: $family-secondary;
+            font-size: 15px;
+            text-decoration-line: underline;
+            color: $secondary-color;
+            line-height: 200%;
+            word-break: break-all;
+        }
+    }
+}
+
+.thumb-icon-profile {
+    color: $main-color;
+    background-color: white;
+    border: 2px solid $main-color;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 3px 6px;
+
+    float: right;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+.thumb-icon-profile-check {
+    color: white !important;
+    background-color: $main-color !important;
+    border: 2px solid white !important;
+}
+
+.vol-profile-col {
+    margin: 0 !important;
+}
+
+// our classic pink tags
+.custom-tag {
+    background-color: transparent !important;
+    color: $accent-color !important;
+
+    border-width: 1px;
+    border-color: $accent-color;
+    border-style: solid;
+
+    font-weight: 500;
+}
+
+.profile-volunteer-section {
+    background-color: $main-color;
+    color: white;
+    font-size: $font-30;
+    font-weight: bold;
+    padding: 10px;
+
+    .profile-volunteer-pic {
+        width: 155px !important;
+        height: 155px !important;
+        object-fit: cover;
+        margin:auto;
+    }
+}
+
+
+.column-profile-right {
+    padding: 1.5rem 1.5rem 2.0rem 1.5rem !important;
+    background-color: white;
+    margin: 20px;
+
+    // tabs bar at the top
+    .tabs-bar {
+        padding: 0;
+        margin: 0;
+
+        .custom-tab-stat {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+
+        .custom-tab-notif {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+
+        .custom-tab-vol {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+
+        .custom-tab-review {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+        .custom-tab-opp {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+        .custom-tab-history {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+
+        //USED IN VOLUNTEER PROFILE TOO
+        .custom-tab-selected {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+
+        //USED IN VOLUNTEER PROFILE TOO
+        .custom-tab {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+
+        //USED IN VOLUNTEER PROFILE TOO
+        .custom-tab-third {
+            font-family: $family-secondary;
+            font-weight: bold;
+            color: $grey-dark;
+        }
+
+        //USED IN VOLUNTEER PROFILE TOO
+        .custom-tab-blue {
+            color: $main-color;
+        }
+    }
+}
+
+// organization stats page
+.org-stats {
+    .grey {
+        background-color: $grey-light;
+        font-size: 18px;
+        text-align: center;
+        padding: 5px;
+    }
+    .white {
+        background-color: white;
+        font-size: 18px;
+        text-align: center;
+        padding: 5px;
+    }
+    .pink {
+        font-size: 25px;
+        color: $accent-color;
+        font-weight: 600;
+    }
+}

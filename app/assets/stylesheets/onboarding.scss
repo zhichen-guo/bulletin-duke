@@ -1,0 +1,363 @@
+//STYLESHEET FOR ANY ONBOARDING RELATED PAGES/PARTIALS THAT SHOW UP
+//WHEN THE USER CLICKS THE OPTION TO SIGN UP. THIS INCLUDES ALL INPUT
+//LABELS, INPUT FIELDS, IMAGES, BUTTONS, ETC.
+//AUTHOR: HERLEEN KAUR
+
+// Place all the styles related to the onboarding pages here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+
+ * {
+    font-family: $family-primary;
+ }
+
+.onboarding-title {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+
+    text-align: center;
+    margin: 10px;
+}
+.onboard-text {
+    font-size: 18px;
+    text-align: left;
+    padding: 5px;
+    color: $main-color !important;
+    font-weight: 600;
+ }
+ .onboard-text-s {
+    font-size: 18px;
+    text-align: left;
+    padding: 5px;
+    color: $grey-dark !important;
+    font-weight: normal;
+ }
+
+.onboarding-vector {
+    padding: 30px 15px 0 5px;
+    margin: 0 !important;
+}
+
+.o-right-column {
+    padding: 50px 10px;
+}
+
+.o-subtitle {
+    font-family: $family-secondary;
+    font-size: $font-20;
+    color: $main-color;
+    font-weight: 600;
+}
+.o-subtitle-done {
+    font-family: $family-secondary;
+    font-size: $font-20;
+    color: $accent-color;
+    font-weight: 600;
+}
+.o-small {
+    font-family: $family-secondary;
+    font-size: 12px;
+    color: $grey-dark;
+}
+#o-heading-sub {
+    margin-top: 10px;
+}
+
+.top-o-field {
+    margin: auto auto 2px auto !important;
+    width: 70%;
+}
+
+.o-heading {
+    margin-top: 15px;
+    margin-bottom: 5px;
+
+    font-family: $family-secondary;
+    font-size: 18px;
+    color: $accent-color;
+    font-weight: 600;
+}
+.onboard-button {
+    margin-right: 10px;
+    margin-bottom: 3px;
+    border-radius: $button-round;
+    background-color: $grey-dark !important;
+    border-color: $grey-dark !important;
+    color: white !important;
+
+    font-family: $family-secondary;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: rgba( $accent-color, .7 ) !important;
+
+        border-width: 1px;
+        border-color: rgba( $accent-color, .7 ) !important;
+        border-style: solid;
+    }
+}
+.onboard-button-clicked {
+    background-color: $accent-color !important;
+    border-color: $accent-color !important;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: $accent-color !important;
+        border-color: $accent-color !important;
+    }
+}
+
+.o-main-column {
+    margin: 0 !important;
+}
+.o-type-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.o-control {
+    width: 45%;
+    margin-bottom: 5px !important;
+}
+.o-label {
+    font-family: $family-secondary;
+    color: $main-color !important;
+    float: left;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.o-control-long {
+    width: 94%;
+    margin-bottom: 5px !important;
+}
+.o-hidden {
+    display:none;
+}
+.fix-select {
+    margin-bottom: 12px !important;
+    margin-right: 12px !important;
+}
+.fix-select {
+    margin-top: 6px !important;
+    margin-left: -2px !important;
+}
+.affiliation-select {
+    margin-bottom: 12px !important;
+    width: 40%;
+}
+
+.volunteer-tag {
+    font-family: $family-primary;
+    font-weight: 500;
+
+    background-color: transparent;
+    color: $grey-extra-dark;
+
+    border-width: 1px;
+    border-color: $grey-extra-dark;
+    border-style: solid;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: rgba( $secondary-color, .7 );
+        color: white;
+
+        border-width: 1px;
+        border-color: rgba( $secondary-color, .7 );
+        border-style: solid;
+    }
+}
+.volunteer-tag-checked {
+    background-color: $secondary-color !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $secondary-color !important;
+    border-style: solid;
+}
+.organization-tag {
+    font-family: $family-primary;
+    font-weight: 500;
+
+    background-color: transparent;
+    color: $grey-extra-dark;
+
+    border-width: 1px;
+    border-color: $grey-extra-dark;
+    border-style: solid;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: rgba( $secondary-color, .7 );
+        color: white;
+
+        border-width: 1px;
+        border-color: rgba( $secondary-color, .7 );
+        border-style: solid;
+    }
+}
+.organization-tag-checked {
+    background-color: $secondary-color !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $secondary-color !important;
+    border-style: solid;
+}
+.o-field {
+    width: auto;
+    margin: auto;
+}
+
+.o-next-arrow {
+    font-size: 25px;
+    background-color: $main-color;
+    color: $white;
+    border-radius: 4px;
+
+    float: right;
+    padding: 0 15px 0 15px;
+
+    &:hover {
+        cursor: pointer;
+        color: $secondary-color;
+    }
+}
+
+// .org-next {
+//     display:none;
+// }
+// .org-div-hidden {
+//     display:none;
+// }
+
+.onboard-org-button {
+    margin-right: 10px;
+
+    border-radius: $button-round;
+    background-color: $grey-dark !important;
+    border-color: $grey-dark !important;
+    color: white !important;
+
+    font-family: $family-secondary;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: rgba( $accent-color, .7 ) !important;
+
+        border-width: 1px;
+        border-color: rgba( $accent-color, .7 ) !important;
+        border-style: solid;
+    }
+}
+.onboard-org-button-clicked {
+    background-color: $accent-color !important;
+    border-color: $accent-color !important;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: $accent-color !important;
+        border-color: $accent-color !important;
+    }
+}
+
+.o-navbar {
+    font-family: $family-secondary;
+    font-size: 18px;
+    font-weight: bold;
+
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+   .o-navbar-item-grey {
+       font-family: $family-secondary;
+       color: $grey-dark;
+   }
+
+   .o-navbar-item-selected {
+       font-family: $family-secondary;
+       color: $main-color;
+   }
+}
+.o-navbar-item:hover {
+    cursor: pointer;
+    color: $secondary-color !important;
+}
+
+.org-register-box {
+    padding: 0 50px 0 50px;
+}
+
+@media only screen and (max-width: 768px) {
+  .org-register-box {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 392px) {
+  #regphone {
+    margin-left: -5px;
+    margin-right: -50px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .streetcity {
+    width: 94.5%;
+  }
+  .onboarding-title{
+    display: none;
+  }
+}
+
+.o-register-subheading {
+    font-family: $family-secondary;
+    font-size: 16px;
+    font-weight: bold;
+    color: $accent-color;
+
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+.o-small-checkbox {
+    font-family: $family-secondary;
+    font-size: 12px;
+    color: $grey-extra-dark;
+}
+.button-tag {
+    background-color: white;
+    border: none;
+    color: white;
+    padding: 0px 0px 0px 0px;
+}
+.button-to {
+    background-color: $secondary-color !important;
+    color: white !important;
+    padding: 10px !important;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba( $secondary-color, .7 ) !important;
+        color: white !important;
+    }
+}

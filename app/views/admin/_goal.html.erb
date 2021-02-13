@@ -1,0 +1,19 @@
+<div class="column is-8 is-offset-2">
+    <%= link_to "Create new challenge!", new_challenge_path, class: "button add-challenge-button is-centered is-fullwidth" %>
+</div>
+
+<div class ="column is-8 is-offset-2">
+    <div class="org-master-container">
+        <% Challenge.all.each do |challenge| %>
+            <div class="admin-orgs columns is-mobile">
+                <div class="column">
+                    <div class="admin-challenge-name"> <%= challenge.title %> (<%= challenge.goal %> hours)</div>
+                    <div class="admin-challenge-date"> <%= challenge.start %> - <%= challenge.end %> </div>
+                    <div class="admin-challenge-info"> <%= challenge.description.html_safe %> </div>
+                    <%= link_to '<button class="challenges-edit-button button">edit challenge</button>'.html_safe, edit_challenge_path(challenge) %> <br><br>
+                    <%= link_to '<div class="challenges-delete">or delete this challenge</div>'.html_safe, challenge_path(challenge), method: :delete, data: {confirm: "Are you sure you want to delete this challenge?"} %><br>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

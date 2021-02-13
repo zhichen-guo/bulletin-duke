@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="grey-background">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    </head>    
+    
+    <body>
+        <div class="contact-top-bar">
+            <%= link_to '<button class="close-button">Cancel</button>'.html_safe, "/admin_home" %>
+        </div>
+        </br>
+        </br>
+
+        <%= form_for :challenge, url: challenge_path(@challenge), method: :patch do |f| %>
+            <% if @challenge.errors.any? %>
+            <h2>Errors:</h2>
+            <ul>
+                <% @opportunity.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+
+        <div class="columns">
+            <div class="column is-4 contact-left-column">
+                <div class="new-opp-title">Add new challenge:</div>
+            
+                <div class="contact-input-div" style="margin-top: 30px">
+                    <%= f.label :title, "Title:", :class => "contact-input-text" %><br>
+                    <%= f.text_field :title, :class => "input", required: true %></br>
+                </div>
+
+                <div class="contact-input-div control" id="new-volunteer-inputs">
+                    <%= f.label :goal, "Goal in hours:", :class => "contact-input-text"%><br>
+                    <%= f.number_field :goal, min:0, class: "input", :style => "width: 33%" %>
+                </div>
+
+                <div class="contact-input-div" style="margin-top: 30px">
+                    <%= f.label :challenge_type, "Type:", :class => "contact-input-text" %><br>
+                    <%= f.check_box :challenge_type %></br>
+                </div>
+
+                <div class="contact-input-div control">
+                    <%= f.label :start, "End date:", :class => "contact-input-text"%><br>
+                    <%= f.date_field :start, min: Date.today, max: Date.today.next_year, class: "input"  %>
+                </div>
+                
+                <div class="contact-input-div control">
+                    <%= f.label :end, "Start date:", :class => "contact-input-text"%><br>
+                    <%= f.date_field :end, min: Date.today, max: Date.today.next_year, class: "input"  %>
+                </div>
+            </div>
+
+            <div class="column is-7 contact-right-column">
+                <div class="description-box-label">
+                    <%= f.label :description, "Description:", :class => "contact-input-text"%><br>
+                </div>
+                <%= f.text_area :description, :class => "tinymce", rows:8, cols:120 %>
+            </div>
+        </div>
+
+
+        <div class="create-button-div">
+            <div class="tagInputContainer">
+                    <button class="create-button submit-create">Update Challenge</button>
+                <% end %>
+            </div>
+        </div>
+
+    </body>
+</html>
+

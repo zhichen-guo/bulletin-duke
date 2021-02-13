@@ -1,0 +1,80 @@
+//STYLE FOR LANDING PAGE AND ERROR PAGES
+//404, 500, 403, AND BULLETIN HOME
+//AUTHOR: ZHICHEN GUO AND HERLEEN KAUR
+
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+.custom-hero {
+    background-color: $main-color !important;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+
+   .font-large-title {
+       font-size:  $font-80;
+   }
+
+   .font-large-subtitle {
+       font-family: $family-secondary;
+       font-size: $font-30;
+   }
+
+   .error-big-text {
+       color: $grey-dark !important;
+       font-size: $font-120;
+   }
+   .error-medium-text {
+       font-family: $family-secondary !important;
+       color: $grey-light !important;
+       font-size: $font-30;
+   }
+   .error-small-text {
+       font-family: $family-secondary !important;
+       color: $accent-color !important;
+       font-size: $font-20;
+   }
+}
+
+/** buttons found on homepage:
+- color is pink
+- pay attention to size, border width, and font
+- margins are 30
+**/
+.custom-button {
+    border-radius: $button-round !important;
+    border-width: $button-border !important;
+    color: $accent-color !important;
+
+    border-color: $accent-color !important;
+    margin-top: 20px;
+    float: left;
+
+    font-family: $family-primary !important;
+    font-weight: 500;
+    font-size: $font-30 !important;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba( $accent-color, .1 );
+    }
+}
+
+// footer is a white backgroundd
+.custom-footer {
+    background-color: $white !important;
+
+   .footer-vector {
+       text-align: center;
+       width: 954px;
+       height: 71px;
+   }
+}
+
+@media only screen and (max-width: 900px) {
+    .homepage-figure {
+        padding-top: 100px !important;
+    }
+}

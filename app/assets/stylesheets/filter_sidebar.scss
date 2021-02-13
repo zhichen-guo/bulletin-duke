@@ -1,0 +1,143 @@
+//STYLESHEET FOR THE FILTERING CHECKBOXES, SLIDER, TAGS,
+//FILTER BUTTON, MAKE NEW OPP BUTTON.
+//THE FILTERING OPTIONS ARE CONTAINED INSIDE A COLUMN OF CLASS feed-left
+//STYLE FOR THE COLUMN IN THE feeds.scss STYLESHEET.
+//AUTHOR: ZHICHEN GUO AND HERLEEN KAUR
+
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+.dropdown {
+    width: 100%;
+  
+    .dropdown-trigger {
+      width: 100%
+    }
+  
+    .button {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: -13px;
+    }
+  
+    .dropdown-menu{
+      margin-top: 10px;
+    }
+}
+
+.checkboxes {
+    font-size: 15px;
+    font-weight: normal;
+    color: $main-color;
+
+    margin-left: 15px;
+    padding: 5px 0;
+}
+
+/* The slider */
+.slider {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $grey-dark;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+.slider:before {
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: $accent-color;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px $accent-color;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.filter-button {
+    background-color: $secondary-color !important;
+    color: white !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0;
+    display: block;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba($secondary-color, .7 );
+        color: white !important;
+    }
+}
+
+.create-opp-button {
+    background-color: $secondary-color;
+    color: white;
+    margin: 20px;
+    display: block;
+}
+
+.filter-custom-tag-checked, .filter-custom-tag-checked-mobile {
+    background-color: $secondary-color !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $secondary-color !important;
+    border-style: solid;
+}
+
+.tagbox {
+    padding: 10px 0 0 0;
+
+    .filter-custom-tag, .filter-custom-tag-mobile{
+        font-family: $family-primary;
+        font-weight: 500;
+
+        background-color: transparent;
+        color: $grey-extra-dark;
+
+        border-width: 1px;
+        border-color: $grey-extra-dark;
+        border-style: solid;
+        
+        &:hover {
+            cursor: pointer;
+
+            background-color: rgba( $secondary-color, .7 );
+            color: white;
+
+            border-width: 1px;
+            border-color: rgba( $secondary-color, .7 );
+            border-style: solid;
+        }
+    }
+}

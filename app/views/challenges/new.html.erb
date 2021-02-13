@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="grey-background">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    </head>
+    
+    <body>
+        <div class="contact-top-bar">
+            <%= link_to '<button class="close-button">Cancel</button>'.html_safe, "/admin_home" %>
+        </div>
+        </br>
+        </br>
+    
+        <%= form_for :challenge, url: challenges_path do |f| %>
+        <% if @challenge.errors.any? %>
+        <h2>Errors:</h2>
+        <ul>
+            <% @challenge.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+        <% end %>
+    
+        <div class="columns">
+            <div class="column is-4 contact-left-column">
+                <div class="new-opp-title">Add new challenge:</div>
+            
+                <div class="contact-input-div control" style="margin-top: 30px">
+                    <%= f.label :title, "Title:", :class => "contact-input-text" %><br>
+                    <%= f.text_field :title, :class => "input", required: true %></br>
+                </div>
+
+                <div class="contact-input-div control" style="margin-top: 30px">
+                <%= f.label :type, "Challenge Type:", :class => "contact-input-text" %> <br>
+                    <input id="type_site" name="site" type="radio" value="site" checked='true' /> Site-wide
+                    <span class="small-tab"> <input id="type_user" name="user" type="radio" value="user" /> User </span>
+                    <div class="input-subtitle"> Site-wide challenges are cumulative for the whole site, while user-based challenges are individual and display progress made by each individual user's hours.</div>
+                </div>
+
+                <div class="contact-input-div control">
+                    <%= f.label :goal, "Goal in hours:", :class => "contact-input-text"%><br>
+                    <%= f.number_field :goal, min:0, class: "input", :style => "width: 33%" %>
+                </div>
+
+                <div class="contact-input-div control">
+                    <%= f.label :start, "Start date:", :class => "contact-input-text"%><br>
+                    <%= f.date_field :start, min: Date.today, max: Date.today.next_year, class: "input"  %>
+                </div>
+                
+                <div class="contact-input-div control">
+                    <%= f.label :end, "End date:", :class => "contact-input-text"%><br>
+                    <%= f.date_field :end, min: Date.today, max: Date.today.next_year, class: "input"  %>
+                </div>
+            </div>
+
+            <div class="column is-7 contact-right-column">
+                <div class="description-box-label">
+                    <%= f.label :description, "Description:", :class => "contact-input-text"%><br>
+                </div>
+                <%= f.text_area :description, :class => "tinymce", rows:8, cols:120 %>
+            </div>
+        </div>
+
+
+        <div class="create-button-div">
+            <div class="tagInputContainer">
+                    <button class="create-button submit-create">Create Challenge!</button>
+                <% end %>
+            </div>
+        </div>
+
+    </body>
+</html>

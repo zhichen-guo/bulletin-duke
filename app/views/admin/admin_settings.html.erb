@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="grey-background">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    </head>
+
+    <body>
+
+
+    <%= link_to "/admin_home", class: "settings-to-home" do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+    <br>
+    <br>
+    <br>
+
+    <div class="tabs is-right" style="padding-bottom: 0; margin-top: 10px;margin-bottom:0px">
+      <h1 class="admin-name"> <%= current_user.name %> </h1>
+      <ul class="custom-admin-nav">
+        <li><a class="admin-nav-item admin-nav-active" id="admin-tab"> assign admins </a></li>
+        <li><a class="admin-nav-item admin-nav-inactive" id="interface-tab"> edit interface </a></li>
+      </ul>
+    </div>
+
+    <div class="columns" style="padding-top: 0;">
+        <div class="column admin-profile">
+
+            <div id="assign-admin-div">
+              <div class="container assign-admin-div" id="create-admin-form">
+                <div class="box admin-box">
+                  <div class="input-label"> This will create an admin with the provided email and <span class="input-label-pink">a temporary password</span> that will be flashed on the screen. If the email is associated with a local account, they should be told to change their password from the login page. If, for example, the provided email is the same as their Google account, they may just use the "Sign in with Google" option from the login page.
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                    <%= form_tag(admin_form_path) do %>
+
+                      <div class="field is-grouped is-grouped-multiline">
+                        <div class="control custom-control">
+                          <%= label_tag(:name, "Full name: ", class: "input-label") %>
+                          <%= text_field_tag(:name, nil, class: "input", placeholder: "Jane Doe") %>
+                        </div>
+                        <div class="control custom-control">
+                          <%= label_tag(:email, "Email address: ", class: "input-label") %>
+                          <%= text_field_tag(:email, nil, class: "input", placeholder: "123@abc.com") %>
+                        </div>
+                      </div>
+
+                      <div class="admin-buttons">
+                          <%= button_tag(type: 'submit', class: "button admin-submit-button", id: "admin-submit") do %>
+                              submit
+                          <% end %>
+                      </div>
+                    <% end %>
+                    <div class="admin-buttons">
+                        <button class="button admin-cancel-button" id="admin-cancel">cancel</button>
+                    </div>
+                    </br>
+                </div>
+              </div>
+
+              <div class="container assign-admin-div" id="create-admin-cancel" style="text-align:center; display:none">
+                  <div class="box admin-box admin-label">
+                      No new admin user was created. </br>
+                      <span class="admin-label-dark" id="admin-back">
+                          click to exit
+                      </span>
+                  </div>
+              </div>
+            </div>
+
+            <div id="edit-interface-div">
+            <%= form_tag update_settings_path, method: :patch, multipart: true do |f|%>
+
+              <div class="field custom-control">
+                <%= label_tag(:institution, "Name of institution:", class: "input-label") %> <br>
+                <%= text_field_tag(:institution, nil, class: "input", value: @interface.institution) %>
+              </div>
+              <div class="field custom-control">
+                <%= label_tag(:time_zone, "Time zone:", class: "input-label time-zone-label") %>
+                <%= time_zone_select("user", "time_zone", nil, default: @interface.time_zone) %>
+              </div>
+
+              <div class="custom-heading" style="margin-top:35px;">Authentication Options</div>
+              <div class="custom-text"> Users can be given options for how they would like to sign in. Select the options you would like to provide. 
+              <br><span class="custom-pink">Please note you must rebuild the application if you edit these options.</span></div>
+              <ul>
+                <li style="list-style:none;">
+                  <input type="checkbox" name="edit_facebookauth" id="edit_facebookauth" value="0" <%= !OAuthStrategy.where(name: "facebook").empty? ? "checked='true'" : nil %> >
+                  <span class="auth-label">Facebook </span>
+                </li>
+                <div id="edit_facebookauth_fields">
+                    <span class="input-label">Register your app on <a href="https://developers.facebook.com/">developers.facebook.com</a> and report your credentials. When prompted for redirect URIs, enter the following: [ENTER] </span>
+                  <div class="control custom-control">
+                    <%= label_tag(:facebook_client_id, "Facebook Client ID: ", class: "input-label") %>
+                    <%= text_field_tag(:facebook_client_id, Interface.first.o_auth_strategies.find_by_name("facebook").nil? ? nil : Interface.first.o_auth_strategies.find_by_name("facebook").client_id, class: "input", placeholder: "Client ID") %>
+                  </div>
+                  <div class="control custom-control">
+                    <%= label_tag(:facebook_client_secret, "Facebook Client Secret: ", class: "input-label") %>
+                    <%= text_field_tag(:facebook_client_secret, Interface.first.o_auth_strategies.find_by_name("facebook").nil? ? nil : Interface.first.o_auth_strategies.find_by_name("facebook").client_secret, class: "input", placeholder: "Client Secret") %>
+                  </div>
+                  <div class="control custom-control">
+                    <%= label_tag(:facebook_redirect, "Facebook Redirect URL: ", class: "input-label") %>
+                    <%= text_field_tag(:facebook_redirect, Interface.first.o_auth_strategies.find_by_name("facebook").nil? ? nil : Interface.first.o_auth_strategies.find_by_name("facebook").redirect_url, class: "input", placeholder: "https://bulletin.colab.duke.edu/users/auth/facebook/callback") %>
+                  </div>
+                </div>
+
+                <li style="list-style:none;">
+                  <input type="checkbox" name="edit_googleauth" id="edit_googleauth" value="0" <%= !OAuthStrategy.where(name: "google").empty? ?
+                  "checked='true'" : nil %> >
+                  <span class="auth-label">Google </span>
+                </li>
+                <div id="edit_googleauth_fields">
+                  <span class="input-label">Register your app on <a href="https://console.developers.google.com/">console.developers.google.com</a> and report your credentials. When prompted for redirect URIs, enter the following: [ENTER] </span>
+                  <div class="control custom-control">
+                    <%= label_tag(:google_client_id, "Google Client ID: ", class: "input-label") %>
+                    <%= text_field_tag(:google_client_id, Interface.first.o_auth_strategies.find_by_name("google").nil? ? nil : Interface.first.o_auth_strategies.find_by_name("google").client_id, class: "input", placeholder: "Client ID") %>
+                  </div>
+                  <div class="control custom-control">
+                    <%= label_tag(:google_client_secret, "Google Client Secret: ", class: "input-label") %>
+                    <%= text_field_tag(:google_client_secret, Interface.first.o_auth_strategies.find_by_name("google").nil? ? nil : Interface.first.o_auth_strategies.find_by_name("google").client_secret, class: "input", placeholder: "Client Secret") %>
+                  </div>
+                  <div class="control custom-control">
+                    <%= label_tag(:google_redirect, "Facebook Redirect URL: ", class: "input-label") %>
+                    <%= text_field_tag(:google_redirect, Interface.first.o_auth_strategies.find_by_name("google").nil? ? nil : Interface.first.o_auth_strategies.find_by_name("google").redirect_url, class: "input", placeholder: "https://bulletin.colab.duke.edu/users/auth/google_oauth2/callback") %>
+                  </div>
+                </div>
+
+
+                <li style="list-style:none;">
+                  <input type="checkbox" name="edit-bulletin-auth" id="edit-bulletin-auth" value="0" disabled="true" checked="true">
+                  <span class="auth-label">Local Email Login </span>
+                </li>
+              </ul>
+
+                <div class="custom-heading" style="margin-top:35px;">Branding</div>
+                <div class="custom-text" style="margin-bottom:20px"> These inputs and images will be used to replace the current defaults. For example, the site name, tagline, vector, and school logo will be used to replace each associated aspect of the image on the left.
+                <br><span class="custom-pink">If any of these are unfilled, we will use the defaults.</span></div>
+
+                <div class="field is-grouped is-grouped-multiline" style="margin-bottom:10px">
+                  <div class="control custom-control">
+                    <%= label_tag(:edit_interface_name, "What would you like to name the site?", class: "input-label") %> <br>
+                    <%= text_field_tag(:edit_interface_name, nil, class: "input", value: @interface.name) %>
+                  </div>
+                  <div class="control custom-tagline">
+                    <%= label_tag(:edit_interface_tagline, "What would you like the homepage tagline to be?", class: "input-label") %> <br>
+                    <%= text_field_tag(:edit_interface_tagline, nil, class: "input", value: @interface.tag_line) %>
+                  </div>
+                </div>
+                <div class="columns">
+                  <div class="column is-one-third">
+                    <div class="custom-file">
+                        <%= label_tag(:edit_interface_vector, "Homepage vector:", class:"input-label")%><br>
+                        <%= file_field_tag "edit_interface_vector", accept: "image/png,image/gif,image/jpeg", class: "input"%>
+                    </div>
+                    <div class="custom-file">
+                        <%= label_tag(:edit_interface_logo, "Site logo:", class:"input-label")%><br>
+                        <%= file_field_tag "edit_interface_logo", accept: "image/png,image/gif,image/jpeg", class: "input"%>
+                    </div>
+                    <div class="custom-file">
+                        <%= label_tag(:edit_school_logo, "School logo:", class:"input-label")%><br>
+                        <%= file_field_tag "edit_school_logo", accept: "image/png,image/gif,image/jpeg", class: "input"%>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <figure class="custom-image-border">
+                      <%= image_tag "customizable_homepage.png"%>
+                    </figure>
+                  </div>
+                </div>
+                <br>
+
+                <div class="custom-heading">Color Palette</div>
+                <div class="custom-text" style="margin-bottom:20px">
+                  These colors will replace the current color palette seen in the image to the right. The current primary color is dark blue, secondary color is light blue, and accent color is coral. If you need help picking out colors or finding HEX codes, visit <a href="https://color.adobe.com/create/color-wheel" class="custom-light-blue">this site.</a>
+                  <br><span class="custom-pink">If any of these are unfilled, we will use the defaults.</span>
+                </div>
+                <div class="columns">
+                  <div class="column is-one-third">
+                    <div class="custom-file-control">
+                      <%= label_tag(:primary_color, "Site's primary color:", class: "input-label") %> <br>
+                      <%= text_field_tag(:primary_color, nil, class: "input", value: @interface.primary_color) %>
+                    </div>
+                    <div class="custom-file-control">
+                      <%= label_tag(:secondary_color, "Site's secondary color:", class: "input-label") %> <br>
+                      <%= text_field_tag(:secondary_color, nil, class: "input", value: @interface.secondary_color) %>
+                    </div>
+                    <div class="custom-file-control">
+                      <%= label_tag(:accent_color, "Site's accent color:", class: "input-label") %> <br>
+                      <%= text_field_tag(:accent_color, nil, class: "input", value: @interface.accent_color) %>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <figure class="custom-image-border">
+                      <%= image_tag "customizable_colors.png"%>
+                    </figure>
+                  </div>
+                </div>
+
+
+                <div class="custom-heading" style="margin-top:35px;">Locations for filter by distance</div>
+                <div class="custom-text" style="margin-bottom:20px"> This website allows the volunteers to filter volunteer opportunities based on distance from different campus locations or landmarks. If you have a specific office or campus address, please fill out the first address with it. Then, add any additional landmark addresses (up to a total of 3).</div>
+
+                <% for i in 0..2 %>
+
+                    <div class="field is-grouped is-grouped-multiline" style="margin-bottom:20px">
+                        <div class="control custom-control">
+
+                            <label for=<%= i.to_s + "_name" %> class="input-label-bold">Name of Landmark:</label>
+                            <input value="<%= @landmarks[i].nil? || @landmarks[i].name.nil? ? nil : @landmarks[i].name %>" id=<%= i.to_s + "_name" %> name=<%= i.to_s + "_name" %> type="text" class="input" placeholder="Name"/>
+
+                        </div>
+
+                        <div class="field o-control-long">
+                            Address:
+                        </div>
+
+                        <span class="control o-control">
+                            <input value="<%= @landmarks[i].nil? || @landmarks[i].address.nil? ? nil : @landmarks[i].address.street %>" id=<%= i.to_s + "_street" %> name=<%= i.to_s + "_street"%> type="text" class="input" placeholder="Street"/>
+                        </span>
+                        <span class="control o-control">
+                            <input value="<%= @landmarks[i].nil? || @landmarks[i].address.nil? ? nil : @landmarks[i].address.city %>"id=<%= i.to_s + "_city" %> name=<%= i.to_s + "_city" %> type="text" class="input" placeholder="City"/>
+                        </span>
+                        <span class="control o-control">
+                            <input value="<%= @landmarks[i].nil? || @landmarks[i].address.nil? ? nil : @landmarks[i].address.state %>" id=<%= i.to_s + "_state" %> name=<%= i.to_s + "_state" %> type="text" class="input" placeholder="State"/>
+                        </span>
+                        <span class="control o-control">
+                            <input value="<%= @landmarks[i].nil? || @landmarks[i].address.nil? ? nil : @landmarks[i].address.zip %>" id=<%= i.to_s + "_zip" %> name=<%= i.to_s + "_zip" %> type="text" class="input" placeholder="Zip"/>
+                        </span>
+                    </div>
+                <% end %>
+
+                  <div class="custom-heading" style="margin-top:35px;">Submit</div>
+                  <div class="custom-text" style="margin-bottom:20px"> Clicking the next button below will submit all of your information. Please go back and confirm all of your answers before proceeding.</div>
+
+                  <div>
+                    <%= button_tag(type: 'submit', class: "custom-next-arrow") do %>
+                      <i class="fas fa-arrow-right"></i>
+                    <% end %>
+                  </div>
+            <% end %>
+
+            </div>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-item button sign-in-button is-hidden-tablet'  %>
+        </div>
+    </div>
+
+    <% if user_signed_in? %>
+        <div>
+            <a role="button" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+        </div>
+    <% end %>
+    </body>
+</html>

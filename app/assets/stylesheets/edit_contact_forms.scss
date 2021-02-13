@@ -1,0 +1,286 @@
+//STYLES FOR CREATE/EDIT/CLONE NEW OPP, AND EDIT VOLUNTEER/ORG ACCOUNTS,
+//AND CONTACT VOLUNTEERS FORM, contact_volunteers.html.erb
+//AUTHOR: ZHICHEN GUO AND HERLEEN KAUR
+
+//NOTES: O-CONTROL AND O-CONTROL-LONG USED IN ONBOARIDING BUT ALSO IN THESE PAGES
+
+@import "set_color";
+
+.edit-custom-title{
+    font-family: $family-primary;
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    color: $main-color;
+}
+
+.edit-back-arrow {
+    color: $main-color;
+    font-size: $font-30;
+    padding: 5px;
+    margin-left: 5px;
+    float: left;
+}
+
+.edit-label {
+    font-family: $family-secondary;
+    color: white !important;
+    float: left;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.settings-form{
+    padding: 10px;
+}
+
+.edit-user-blue {
+    margin: 10px;
+    background-color: $main-color;
+    border-radius: $button-round;
+    color: $white !important;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 376px) {
+  .edit-user-blue{
+    padding: 30px !important;
+  }
+}
+.edit-user-white {
+    margin: 10px;
+    background-color: $white;
+    border-radius: $button-round;
+    padding: 30px !important;
+    color: $main-color !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .edit-user-white{
+      padding-bottom: 60px !important;
+    }
+  }
+
+.edit-user-title {
+    color: $white !important;
+}
+
+//ISSUE GRAD-MAJOR-FIELD WHY OTHER FIELDS HAVE NO STYLE
+
+.affiliation-dropdown, #grad-major-field {
+    margin: 5px 0 !important;
+    padding: 4.5px !important;
+    border-radius: 0 !important;
+    background-color: $grey-light !important;
+    border-color: $grey-dark !important;
+}
+
+.edit-button {
+    background-color: white;
+    border-width: $button-border !important;
+    font-weight: bold !important;
+    border-color: $accent-color !important;
+    font-family: $family-primary;
+    color: $accent-color !important;
+    padding: 0 10px !important;
+    float: right !important;
+}
+
+.close-button{
+    font-family: $family-secondary !important;
+    font-size: 20px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    background-color: white;
+    color: $accent-color;
+    border: 2px solid $accent-color;
+
+    margin-left: 30px;
+    float: left;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $accent-color;
+        color: white !important;
+    }
+}
+
+.create-button-div {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 50px;
+
+    .create-button{
+        font-family: $family-secondary !important;
+        font-size: 20px;
+        font-weight: bold;
+        box-sizing: border-box;
+        border-radius: 10px;
+
+        padding: 8px 20px !important;
+
+        background-color: $accent-color;
+        color: white;
+        border: 2px solid $accent-color;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba( $accent-color, .7 ) !important;
+        }
+    }
+}
+
+.contact-top-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.contact-left-column {
+    background-color: $main-color;
+    margin: 20px 20px 20px 40px;
+    padding: 40px !important;
+
+    border-radius: $button-round;
+
+    color: white;
+    font-family: $family-secondary;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+
+    .contact-input {
+        width: 100%;
+        height: 40px;
+        word-break: break-word;
+        font-size: 16px;
+    }
+    .contact-input-text {
+        font-family: $family-secondary;
+        margin-bottom: 10px;
+    }
+    .contact-input-div {
+        margin-bottom: 20px;
+    }
+}
+
+.contact-right-column {
+    background-color: white;
+    margin: 20px 40px 20px 20px;
+    padding: 40px !important;
+
+    border-radius: $button-round;
+
+    .contact-input-text {
+        color: $grey-dark;
+        font-family: $family-secondary;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+
+        margin-bottom: 10px;
+    }
+}
+#new-approved-text {
+    display: none;
+}
+#edit-approved-text {
+    display: none;
+}
+#clone-approved-text {
+    display: none;
+}
+
+#link {
+  display: none;
+}
+
+.contact-text-bold {
+    font-weight: 600;
+    font-size: 20px;
+
+    color: $secondary-color;
+}
+
+.ongoing-checkbox {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.ongoing-checkbox-subtitle {
+    font-family: $family-secondary;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 12px !important;
+    color: white;
+}
+
+.description-box-label {
+    margin: 30px 0 15px 0;
+}
+
+@media screen and (max-width: 320px){
+    .ephone{
+      margin-left: -1px;
+    }
+}
+
+.new-custom-tag {
+    font-family: $family-primary;
+    font-weight: 500;
+
+    background-color: transparent;
+    color: $grey-extra-dark;
+
+    border-width: 1px;
+    border-color: $grey-extra-dark;
+    border-style: solid;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: rgba( $secondary-color, .7 );
+        color: white;
+
+        border-width: 1px;
+        border-color: rgba( $secondary-color, .7 );
+        border-style: solid;
+    }
+}
+.new-custom-tag-checked {
+    background-color: $secondary-color !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $secondary-color !important;
+    border-style: solid;
+}
+
+//WARNING: ALSO USED IN CONTACT VOLUNTEERS PAGE
+.new-opp-title{
+    font-family: $family-primary;
+    font-size: 40px;
+    line-height: 40px !important;
+    font-weight: bold;
+    color: white;
+
+    margin-bottom: -5px !important;
+    text-align: center;
+}
+
+.contact-subtitle {
+    font-family: $family-primary;
+    font-size: 15px;
+    color: white;
+    font-weight: normal;
+    font-style: italic;
+
+    margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 450px) {
+    .contact-left-column{
+        padding: 10px !important;
+        margin: 0 15px;
+    }
+}

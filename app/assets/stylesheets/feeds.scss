@@ -1,0 +1,167 @@
+//STYLES FOR VOLUNTEER AND ORGANIZATION FEEDS, I.E.
+//OPPORTUNITY POSTINGS IN _opportunity.html.erb PARTIAL
+//AND EMPTY LEFT COLUMN THAT CONTAINS FILTERING CRITERIA.
+//ACTUAL FILTERING CRITERIA STYLES IN filter_sidebar.scss STYLESHEET.
+//AUTHOR: ZHICHEN GUO AND HERLEEN KAUR
+
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+// tabs
+.tiny-tab {
+    margin-left: 5px;
+}
+.small-tab {
+    margin-left: 10px;
+}
+.medium-tab {
+    margin-left: 15px;
+}
+.large-tab {
+    margin-left: 30px;
+}
+
+.featured-tag {
+    margin-left: 0 10px;
+    float: right;
+
+    background-color: $secondary-color !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $secondary-color !important;
+    border-style: solid;
+
+    font-family: $family-primary;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.column-feed {
+    background-color: white;
+    padding: 1.5rem 1.5rem 2.0rem 1.5rem;
+    margin: 20px;
+
+    font-family: $family-secondary;
+
+    //Left column of feed -- profile info or filtering options
+    .feed-left {
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 10px;
+
+        color: $main-color;
+    }
+
+    // right part of the feed
+    .opportunity {
+        font-family: $family-primary;
+        border-bottom: 1px $grey-light solid;
+        padding: 15px;
+
+        .opp-title {
+            color: $main-color !important;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 28x;
+
+            &:hover {
+                cursor: pointer;
+                color: $secondary-color !important;
+            }
+        }
+        .opp-org {
+            color: $main-color;
+            font-weight: normal;
+            font-size: $font-20;
+            line-height: 28px;
+        }
+        .opp-description {
+            font-family: $family-secondary !important;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 20px;
+
+            margin-top: 5px;
+        }
+
+        .opp-tagbox {
+            margin: 15px 0 0 0;
+        }
+        .opp-tag {
+            background-color: transparent;
+            color: $accent-color;
+
+            border-width: 1px;
+            border-color: $accent-color;
+            border-style: solid;
+
+            font-family: $family-primary;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .feed-opp-right{
+            font-family: $family-secondary;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 35px;
+
+
+
+            color: $secondary-color;
+            display: inline-block;
+            padding: 20px 15px;
+
+        }
+        @media only screen and (min-width: 1024px){
+          .feed-opp-right{
+            border-left: 1px $grey-light solid;
+          }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .oppinfo{
+      padding: 0 !important;
+    }
+}
+
+.waiting-approval-banner {
+    background-color: $grey-light !important;
+}
+
+.page-button {
+    background-color: $secondary-color !important;
+    color: white !important;
+    display: block;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba( $secondary-color, .7 ) !important;
+        color: white !important;
+    }
+}
+
+.opp-approval {
+    font-family: $family-secondary;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: $grey-extra-dark;
+
+    margin-top: 5px;
+}
+
+.opp-approval-pink {
+    color: $accent-color;
+    font-family: $family-secondary;
+    .next-steps {
+        font-size: 22px;
+        font-weight: 1000;
+    }
+}

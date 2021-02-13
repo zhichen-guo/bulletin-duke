@@ -1,0 +1,388 @@
+<!-- problems to fix:
+footer image isnt centered -->
+
+<!DOCTYPE html>
+<html class="grey-background">
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  </head>
+  <body>
+
+  <% if Interface.first.nil? %>
+
+    <!-- navigation bar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="/">
+
+                  <%= image_tag "navbar_logo.png", :class=>"navbar-image" %>
+
+            </a>
+        </div>
+    </nav>
+
+    <div style="padding-bottom: 0; margin-bottom: 0; width: 100%;">
+      <h1 class="header-bar">
+        Setting up your custom bulletin
+        <span class="header-steps" id="header-step-1"> Step 1 of 3</span>
+        <span class="header-steps" id="header-step-2" style="display:none"> Step 2 of 3</span>
+        <span class="header-steps" id="header-step-3" style="display:none"> Step 3 of 3</span>
+      </h1>
+    </div>
+
+    <div class="columns" style="padding-top: 0;">
+      <div class="column custom-interface">
+
+        <%= form_tag customize_interface_form_path, multipart: true do |f|%>
+
+        <div id="custom-step-one">
+          <div class="custom-text"> It looks like you have not set up a customized interface yet. Welcome to <span class="custom-blue">The Bulletin!</span> We will have you set up your new website below.
+            Please note:
+            <ul>
+              <li class="custom-text"> We will ask you to provide information regarding site admins, branding content (logos, color HEX codes), and landmark addresses</li>
+              <li class="custom-text"> You may edit this information at any time from the admin page </li>
+              <li class="custom-text"> Please note that you must rebuild any time you edit the authentication strategies </li>
+            </ul>
+           </div>
+
+          <br>
+
+          <div class="field custom-control">
+            <%= label_tag(:institution, "Name of institution:", class: "input-label") %> <br>
+            <%= text_field_tag(:institution, nil, class: "input custom-pg1-tag", id: "custom-inst-name", placeholder: "Duke University") %>
+            <p id="inst-empty">This is a required field!</p>
+          </div>
+
+          <div class="field custom-control">
+            <%= label_tag(:time_zone, "Time zone:", class: "input-label time-zone-label") %>
+            <%= time_zone_select("user", "time_zone", nil, default: "Eastern Time (US & Canada)") %>
+          </div>
+
+          <div class="custom-heading" style="margin-top:35px;">Authentication Options</div>
+          <div class="custom-text"> Users can be given options for how they would like to sign in. Select the options you would like to provide. </div>
+          <ul>
+            <li style="list-style:none;">
+              <%= check_box_tag(:facebookauth, checked="true", class: "custom-blue") %>
+              <span class="auth-label">Facebook </span>
+            </li>
+            <div id="facebook-auth-fields">
+              Register your app on <a href="https://developers.facebook.com/">developers.facebook.com</a> and report your credentials. When prompted for redirect URIs, enter the following: [your host name]/users/auth/facebook/callback
+              <div class="control custom-control">
+                <%= label_tag(:facebook_client_id, "Facebook Client ID: ", class: "input-label") %>
+                <%= text_field_tag(:facebook_client_id, nil, class: "input custom-pg1-tag", id: "fb-client-id", placeholder: "Client ID", required: true) %>
+                <p id="fb-id-empty">This is a required field!</p>
+              </div>
+              <div class="control custom-control">
+                <%= label_tag(:facebook_client_secret, "Facebook Client Secret: ", class: "input-label") %>
+                <%= text_field_tag(:facebook_client_secret, nil, class: "input custom-pg1-tag", id: "fb-client-secret", placeholder: "Client Secret", required: true) %>
+                <p id="fb-secret-empty">This is a required field!</p>
+              </div>
+              <div class="control custom-control">
+                <%= label_tag(:facebook_redirect, "Host Name for the Redirect URL: ", class: "input-label") %>
+                <%= text_field_tag(:facebook_redirect, nil, class: "input custom-pg1-tag", id: "fb-redirect-url", placeholder: "https://bulletin.colab.duke.edu", required: true) %>
+                <p id="fb-url-empty">This is a required field!</p>
+              </div>
+            </div>
+
+            <li style="list-style:none;">
+              <%= check_box_tag(:googleauth, checked="true", class: "custom-blue") %>
+              <span class="auth-label">Google </span>
+            </li>
+            <div id="google-auth-fields">
+              Register your app on <a href="https://console.developers.google.com/">console.developers.google.com</a> and report your credentials. When prompted for redirect URIs, enter the following: [your host name]/users/auth/google_oauth2/callback
+              <div class="control custom-control">
+                <%= label_tag(:google_client_id, "Google Client ID: ", class: "input-label") %>
+                <%= text_field_tag(:google_client_id, nil, class: "input custom-pg1-tag", id: "google-client-id", placeholder: "Client ID", required: true) %>
+                <p id="google-id-empty">This is a required field!</p>
+              </div>
+              <div class="control custom-control">
+                <%= label_tag(:google_client_secret, "Google Client Secret: ", class: "input-label") %>
+                <%= text_field_tag(:google_client_secret, nil, class: "input custom-pg1-tag", id: "google-client-secret", placeholder: "Client Secret", required: true) %>
+                <p id="google-secret-empty">This is a required field!</p>
+              </div>
+              <div class="control custom-control">
+                <%= label_tag(:google_redirect, "Host Name for the Redirect URL: ", class: "input-label") %>
+                <%= text_field_tag(:google_redirect, nil, class: "input custom-pg1-tag", id: "google-redirect-url", placeholder: "https://bulletin.colab.duke.edu", required: true) %>
+                <p id="google-url-empty">This is a required field!</p>
+              </div>
+            </div>
+
+            <li style="list-style:none;">
+              <input type="checkbox" name="bulletin-auth" id="bulletin-auth" value="0" checked="true" disabled="true">
+              <span class="auth-label">Local Email Login </span>
+            </li>
+          </ul>
+
+          <div class="custom-heading" style="margin-top:35px;">Admin Account</div>
+          <div class="custom-text" style="margin-bottom:10px"> We will need to set up a site admin for universal permissions and access to data analytics. After creating an admin here, you may sign in to your account and add as many admins as you would like.</div>
+          <div class="field is-grouped is-grouped-multiline" id="custom-admin-1" style="margin-bottom:15px">
+            <div class="control custom-control">
+              <%= label_tag(:admin_name, "Full name: ", class: "input-label") %>
+              <%= text_field_tag(:admin_name, nil, class: "input custom-pg1-tag", id: "custom-name-1", placeholder: "Jane Doe", required: "required") %>
+              <p id="name-empty-1">This is a required field!</p>
+            </div>
+            <div class="control custom-control">
+              <%= label_tag(:admin_email, "Email address: ", class: "input-label") %>
+              <%= text_field_tag(:admin_email, nil, class: "input custom-pg1-tag custom-email-1", id: "custom-email-1", placeholder: "123@abc.com", required: "required", type: "email") %>
+              <p id="email-empty-1">This is a required field!</p>
+              <p id="email-invalid-1">Make sure the format is correct!</p>
+            </div>
+          </div>
+          <div class="input-label"> NOTE: This will create an admin with the provided email and <span class="input-label-pink">a temporary password</span> that will be flashed on the screen after you submit the entire form. If the email is associated with a local account, change your password from the login page. If, for example, the provided email is the same as a Google account, you may just use the "Sign in with Google" option from the login page without a password.</div>
+
+          <br>
+          <div class="custom-next-arrow" id="custom-one-to-two">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <div id="custom-step-two" style="display:none;">
+          <div class="custom-back-arrow" id="custom-two-to-one">
+            <i class="fas fa-arrow-left"></i>
+          </div>
+          <br>
+
+          <div class="custom-heading" style="margin-top:35px;">Branding</div>
+          <div class="custom-text" style="margin-bottom:20px"> These inputs and images will be used to replace the current defaults. For example, the site name, tagline, vector, and school logo will be used to replace each associated aspect of the image on the left.
+          <br><span class="custom-pink">If any of these are unfilled, we will use the defaults.</span></div>
+
+          <div class="field is-grouped is-grouped-multiline" style="margin-bottom:10px">
+            <div class="control custom-control">
+              <%= label_tag(:interface_name, "What would you like to name the site?", class: "input-label") %> <br>
+              <%= text_field_tag(:interface_name, nil, class: "input", placeholder: "The Bulletin") %>
+            </div>
+            <div class="control custom-tagline">
+              <%= label_tag(:interface_tagline, "What would you like the homepage tagline to be?", class: "input-label") %> <br>
+              <%= text_field_tag(:interface_tagline, nil, class: "input", placeholder: "An all-encompassing web platform connecting volunteers to their communities.") %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-one-third">
+              <div class="custom-file">
+                  <%= label_tag(:interface_vector, "Homepage vector:", class:"input-label")%><br>
+                  <%= file_field_tag "interface_vector", accept: "image/png,image/gif,image/jpeg", class: "input"%>
+              </div>
+              <div class="custom-file">
+                  <%= label_tag(:interface_logo, "Site logo:", class:"input-label")%><br>
+                  <%= file_field_tag "interface_logo", accept: "image/png,image/gif,image/jpeg", class: "input"%>
+              </div>
+              <div class="custom-file">
+                  <%= label_tag(:school_logo, "School logo:", class:"input-label")%><br>
+                  <%= file_field_tag "school_logo", accept: "image/png,image/gif,image/jpeg", class: "input"%>
+              </div>
+            </div>
+            <div class="column">
+              <figure class="custom-image-border">
+                <%= image_tag "customizable_homepage.png"%>
+              </figure>
+            </div>
+          </div>
+          <br>
+
+          <div class="custom-heading">Color Palette</div>
+          <div class="custom-text" style="margin-bottom:20px">
+            These colors will replace the current color palette seen in the image to the right. The current primary color is dark blue, secondary color is light blue, and accent color is coral. If you need help picking out colors or finding HEX codes, visit <a href="https://color.adobe.com/create/color-wheel" class="custom-light-blue">this site.</a>
+            <br><span class="custom-pink">If any of these are unfilled, we will use the defaults.</span>
+          </div>
+          <div class="columns">
+            <div class="column is-one-third">
+              <div class="custom-file-control">
+                <%= label_tag(:primary_color, "Site's primary color:", class: "input-label") %> <br>
+                <%= text_field_tag(:primary_color, nil, class: "input primary-color-input ui-color-input", placeholder: "#132357", pattern: "#[a-fA-F0-9]{6}", title: "# followed by 6-digit hex number") %>
+                <p id="hex-invalid-1">Make sure the format is # followed by 6 hex digits!</p>
+              </div>
+              <div class="custom-file-control">
+                <%= label_tag(:secondary_color, "Site's secondary color:", class: "input-label") %> <br>
+                <%= text_field_tag(:secondary_color, nil, class: "input secondary-color-input ui-color-input", placeholder: "#0577B1", pattern: "#[a-fA-F0-9]{6}", title: "# followed by 6-digit hex number") %>
+                <p id="hex-invalid-2">Make sure the format is # followed by 6 hex digits!</p>
+              </div>
+              <div class="custom-file-control">
+                <%= label_tag(:accent_color, "Site's accent color:", class: "input-label") %> <br>
+                <%= text_field_tag(:accent_color, nil, class: "input accent-color-input ui-color-input", placeholder: "#B76D68", pattern: "#[a-fA-F0-9]{6}", title: "# followed by 6-digit hex number") %>
+                <p id="hex-invalid-3">Make sure the format is # followed by 6 hex digits!</p>
+              </div>
+            </div>
+            <div class="column">
+              <figure class="custom-image-border">
+                <%= image_tag "customizable_colors.png"%>
+              </figure>
+            </div>
+          </div>
+
+          <br>
+          <div class="custom-next-arrow" id="custom-two-to-three">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <div id="custom-step-three" style="display:none;">
+          <div class="custom-back-arrow" id="custom-three-to-two">
+            <i class="fas fa-arrow-left"></i>
+          </div>
+          <br>
+
+          <div class="custom-heading" style="margin-top:35px;">Locations for filter by distance</div>
+          <div class="custom-text" style="margin-bottom:20px"> This website allows the volunteers to filter volunteer opportunities based on distance from different campus locations or landmarks. If you have a specific office or campus address, please fill out the first address with it. Then, add any additional landmark addresses (up to a total of 3).</div>
+
+          <div class="field is-grouped is-grouped-multiline" style="margin-bottom:20px" id="custom-address-1">
+            <div class="control custom-control">
+              <%= label_tag(:landmark_name1, "Name of Landmark 1: ", class: "input-label-bold") %>
+              <%= text_field_tag(:landmark_name1, nil, class: "input", placeholder: "Duke West Campus", required: "required") %>
+            </div>
+            <div class="field o-control-long">
+                <%= label_tag(:landmark_address1, "Address:", class: "input-label") %>
+            </div>
+            <%= fields_for :landmark_address1 do |address_fields| %>
+                <span class="control o-control">
+                    <%= address_fields.text_field :street1, class: "input", placeholder: "Street", required: "required" %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.text_field :city1, class: "input", placeholder: "City", required: "required" %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.text_field :state1, class: "input", placeholder: "State", required: "required"%>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.number_field :zip1, class: "input", placeholder: "Zip Code", required: "required" %>
+                </span>
+            <% end %>
+          </div>
+
+          <span id="custom-address-cancel2" style="display:none">
+            <i class="fas fa-times-circle address-cancel"></i>
+          </span>
+          <div class="field is-grouped is-grouped-multiline" style="margin-bottom:20px;" id="custom-address-2">
+            <div class="control custom-control" style="margin-top:20px">
+              <%= label_tag(:landmark_name2, "Name of Landmark 2: ", class: "input-label-bold") %>
+              <%= text_field_tag(:landmark_name2, nil, class: "input address-input-2", placeholder: "Duke East Campus", required: "required", disabled: true) %>
+            </div>
+            <div class="field o-control-long">
+                <%= label_tag(:landmark_address2, "Address:", class: "input-label") %>
+            </div>
+            <%= fields_for :landmark_address2 do |address_fields| %>
+                <span class="control o-control">
+                    <%= address_fields.text_field :street2, class: "input address-input-2", placeholder: "Street", required: "required", disabled: true %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.text_field :city2, class: "input address-input-2", placeholder: "City", required: "required", disabled: true %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.text_field :state2, class: "input address-input-2", placeholder: "State", required: "required", disabled: true %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.number_field :zip2, class: "input address-input-2", placeholder: "Zip Code", required: "required", disabled: true %>
+                </span>
+            <% end %>
+          </div>
+
+          <span id="custom-address-cancel3" style="display:none">
+            <i class="fas fa-times-circle address-cancel"></i>
+          </span>
+          <div class="field is-grouped is-grouped-multiline" style="margin-bottom:20px;" id="custom-address-3">
+            <div class="control custom-control" style="margin-top:20px">
+              <%= label_tag(:landmark_name3, "Name of Landmark 3: ", class: "input-label-bold") %>
+              <%= text_field_tag(:landmark_name3, nil, class: "input address-input-3", placeholder: "300 Swift Apartments", required: "required", disabled: true) %>
+            </div>
+            <div class="field o-control-long">
+                <%= label_tag(:landmark_address3, "Address:", class: "input-label") %>
+            </div>
+            <%= fields_for :landmark_address3 do |address_fields| %>
+                <span class="control o-control">
+                    <%= address_fields.text_field :street3, class: "input address-input-3", placeholder: "Street", required: "required", disabled: true %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.text_field :city3, class: "input address-input-3", placeholder: "City", required: "required", disabled: true %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.text_field :state3, class: "input address-input-3", placeholder: "State", required: "required", disabled: true %>
+                </span>
+                <span class="control o-control">
+                    <%= address_fields.number_field :zip3, class: "input address-input-3", placeholder: "Zip Code", required: "required", disabled: true %>
+                </span>
+            <% end %>
+          </div>
+          <div style="text-align:center" id="custom-address-plus2">
+            <i class="fas fa-plus-circle address-plus"></i>
+          </div>
+          <div style="text-align:center; display:none" id="custom-address-plus3">
+            <i class="fas fa-plus-circle address-plus"></i>
+          </div>
+
+          <div class="custom-heading" style="margin-top:35px;">Submit</div>
+          <div class="custom-text" style="margin-bottom:20px"> Clicking the next button below will submit all of your information. Please go back and confirm all of your answers before proceeding.</div>
+
+          <div>
+            <%= button_tag(type: 'submit', class: "custom-next-arrow", id:"custom-interface-submit") do %>
+              <i class="fas fa-arrow-right"></i>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+    <section class="hero is-info custom-hero">
+      <div class="hero-body">
+        <div class="columns is-gapless">
+          <div class="column is-half">
+            <h1 class="title font-large-title">
+              <%= @interface.name %>
+            </h1>
+            <h2 class="subtitle font-large-subtitle">
+              <%= @interface.tag_line %>
+            </h2>
+
+            <% get_started = "/feed_volunteer" %>
+            <% if !user_signed_in? %>
+              <div class="control">
+                <a class="button is-outlined is-rounded custom-button" href= "/users/sign_in"> Get Started</a>
+              </div>
+            <% elsif current_user.admin? %>
+              <div class="control">
+                <a class="button is-outlined is-rounded custom-button" href= "/admin"> Get Started</a>
+              </div>
+            <% elsif current_user.is_a? OrgAdmin %>
+              <div class="control">
+                <a class="button is-outlined is-rounded custom-button" href= "/feed_organization"> Get Started</a>
+              </div>
+            <% else %>
+              <div class="control">
+                <a class="button is-outlined is-rounded custom-button" href= <%= "/feed_volunteer" %>> Get Started</a>
+              </div>
+            <% end %>
+
+          </div>
+          </br>
+          </br>
+          <div class="column">
+            <figure class="homepage-figure">
+              <% if @interface.pictures.find_by_name("#{@interface.id}vec") %>
+                  <%= image_tag @interface.pictures.find_by_name("#{@interface.id}vec").image.url %>
+              <% else %>
+                  <%= image_tag "homepage_vector.png" %>
+              <% end %>
+
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <footer class="footer custom-footer">
+        <figure>
+          <% if @interface.pictures.find_by_name("#{@interface.id}slogo") %>
+              <%= image_tag @interface.pictures.find_by_name("#{@interface.id}slogo").image.url, class: "footimg" %>
+          <% else %>
+            <%= image_tag "footer_attributes.png"%>
+          <% end %>
+        </figure>
+    </footer>
+  <% end %>
+
+  </body>
+</html>

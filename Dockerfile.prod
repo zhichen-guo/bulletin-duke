@@ -1,0 +1,24 @@
+FROM ruby:2.6.6
+ARG RAILS_MASTER_KEY $RAILS_MASTER_KEY
+ARG MARIA_DB $MARIA_DB
+ARG MARIA_USER $MARIA_USER
+ARG MARIA_PASSWORD $MARIA_PASSWORD
+ARG MARIA_HOST $MARIA_HOST
+RUN mkdir /webapp
+WORKDIR /webapp
+
+RUN gem install bundler
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" |  tee /etc/apt/sources.list.d/yarn.list
+RUN apt update &&  apt install yarn -y
+
+ADD Gemfile .
+ADD Gemfile.lock .
+RUN bundle install
+RUN apt install vim -y
+
+ADD yarn.lock .
+ADD package.json .
+RUN yarn install --check-files
+
+ADD . .

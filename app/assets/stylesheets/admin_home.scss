@@ -1,0 +1,243 @@
+//STYLES FOR ADMIN HOMESCREEN
+//EVERYTHING EXCEPT PARTIALS, FOUND IN profiles_right.scss
+//AUTHOR: ZHICHEN GUO AND HERLEEN KAUR
+
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+.assign-admin {
+    background-color: $grey-extra-dark !important;
+    border-color: $grey-extra-dark !important;
+    color: white !important;
+
+    font-family: $family-primary;
+    margin-right: -20px !important;
+
+    align-content: center;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba( $grey-extra-dark, .7) !important;
+    }
+}
+
+.admin-box {
+    border: 2px solid $main-color;
+    margin: 20px 10px;
+    padding: 20px;
+}
+
+.admin-buttons {
+    float: right;
+}
+
+.admin-cancel-button {
+    border-radius: $button-round;
+    border-width: $button-border;
+    background-color: $grey-dark !important;
+    color: white !important;
+
+    border-color: $grey-dark !important;
+    padding: 5px 10px;
+    margin: 0px 5px 0 5px;
+
+    font-family: $family-primary !important;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba( $grey-dark, .9 ) !important;
+    }
+    a:link {
+        text-decoration: none !important;
+    }
+}
+
+.admin-submit-button {
+    border-radius: $button-round;
+    border-width: $button-border;
+    background-color: $accent-color !important;
+    color: white !important;
+
+    border-color: $accent-color !important;
+    padding: 5px 10px;
+    margin: 0px 5px 0 5px;
+
+    font-family: $family-primary !important;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba( $accent-color, .9 ) !important;
+    }
+    a:link {
+        text-decoration: none !important;
+    }
+}
+
+.admin-label {
+    font-family: $family-secondary;
+    color: $main-color !important;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.admin-label-dark {
+    font-family: $family-secondary;
+    color: $grey-extra-dark!important;
+    font-size: 16px;
+    font-weight: 600;
+
+    &:hover {
+        cursor: pointer;
+        color: $secondary-color !important;
+    }
+}
+
+.custom-admin-nav {
+    background-color: $main-color !important;
+    font-family: $family-primary !important;
+    font-weight: bold;
+    margin: 0 !important;
+    border-bottom-width: 0 !important;
+}
+
+.admin-profile{
+    padding: 1.5rem 1.5rem 2.0rem 1.5rem !important;
+    background-color: white;
+    margin: 12px !important;
+}
+
+.admin-name{
+    padding: 0.5rem 1.0rem !important;
+    font-size: 25px !important;
+    color: white !important;
+    margin-bottom: 0 !important;
+    background-color: $main-color;
+}
+
+.admin-nav-item {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom-width: 0 !important;
+}
+
+.admin-nav-active {
+    background-color: white;
+    color: $main-color !important;
+}
+
+.admin-nav-inactive {
+    background-color: $main-color;
+    color: white !important;
+
+    &:hover {
+        background-color: white !important;
+        color: $secondary-color !important;
+    }
+}
+
+@media screen and (max-width: 524px){
+    .admin-name{
+      display: none;
+    }
+  
+    .custom-admin-nav{
+        width: 100%;
+    }
+}
+#edit-interface-div {
+    display: none;
+}
+.settings-to-home{
+    font-size: 25px;
+    background-color: $main-color;
+    color: $white;
+    border-radius: 4px;
+
+    float: left;
+    padding: 0 15px 0 15px;
+    margin-bottom: 20px;
+    margin-bottom: 40px;
+
+    &:hover {
+        cursor: pointer;
+        color: $secondary-color;
+    }
+}
+#edit_facebookauth_fields {
+    display: none;
+    padding-top: 5px;
+    padding-left: 21px;
+}
+#edit_googleauth_fields {
+    display: none;
+    padding-top: 5px;
+    padding-left: 21px;
+}
+.add-challenge-button {
+    background-color: $secondary-color !important;
+    font-size: 20px !important;
+    color: white !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0;
+    display: block;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba($secondary-color, .9 ) !important;
+        color: white !important;
+    }
+}
+.challenges-edit-button {
+    border-radius: $button-round;
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+    color: white !important;
+
+    font-family: $family-secondary;
+    font-size: 15px;
+    float: right;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba($secondary-color, .9 ) !important;
+        color: white !important;
+    }
+}
+.challenges-delete {
+    color: $accent-color;
+    float: right;
+    font-family: $family-secondary;
+
+    &:hover {
+        cursor: pointer;
+        color: rgba( $accent-color, .7 ) !important;
+    }
+}
+.input-subtitle {
+    font-family: $family-secondary;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px !important;
+    color: white;
+}
+.admin-challenge-name {
+    font-size: 25px;
+    color: $main-color;
+    font-weight: bold;
+    font-family: $family-primary;
+}
+.admin-challenge-date {
+    font-size: 20px;
+    color: $accent-color;
+    font-family: $family-secondary !important;
+    font-weight: bold;
+}
+.admin-challenge-info {
+    font-size: 20px;
+    color: $grey-dark;
+    font-family: $family-secondary !important;
+}

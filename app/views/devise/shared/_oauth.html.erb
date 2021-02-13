@@ -1,0 +1,35 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Buttons for Bulma!</title>
+  <!-- Bulma -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0/css/bulma.min.css">
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+  <!-- Bulma-Social -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
+</head>
+
+<!-- <div class="sign-in">
+
+  <a href="/users/auth/duke" class="button is-dark sign-in-duke sign-in-duke-button">
+    <div style="padding: 5px;">
+      <span> Sign in with </span>
+      <span style="margin-left: 5px; top: 3px; position: relative;">
+        <% if Interface.first.pictures.find_by_name("#{Interface.first.id}slogo") %>
+            <%= image_tag Interface.first.pictures.find_by_name("#{Interface.first.id}slogo").image.url, style: "height:22px" %>
+        <% else %>
+          <%= image_tag "duke_wordmark_white.png", style: "height:22px"%>
+        <% end %>
+      </span>
+    </div>
+  </a>
+</div> -->
+<div>
+  <% if Interface.first.o_auth_strategies.find_by_name("google") %>
+    <span class="sign-in"><%= link_to '<span class="icon"><i class="fab fa-google"></i></span><span>Sign in with Google</span>'.html_safe, user_google_oauth2_omniauth_authorize_path, id: "hi", class: "button is-google sign-in-external-button", method: :post %></span>
+  <% end %>
+  <% if Interface.first.o_auth_strategies.find_by_name("facebook") %>
+    <span class="sign-in"><%= link_to '<span class="icon"><i class="fab fa-facebook"></i></span><span>Sign in with Facebook</span>'.html_safe, user_facebook_omniauth_authorize_path, class: "button is-facebook sign-in-external-button", method: :post %></span>
+  <% end %>
+</div>

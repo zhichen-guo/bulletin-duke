@@ -1,0 +1,47 @@
+<% Challenge.all.each do |challenge| %>
+    <nav class="navbar">
+        <div class="challenge-nav">
+            <div class="challenge-title"> <%= challenge.title %></div>
+            <div class="challenge-body"> <%= challenge.challenge_type == false ? "The entire site is" : "You are" %> being challenged to reach a goal of <span class="challenge-body-accent"><%= challenge.goal %> hours</span> <%= challenge.challenge_type == false ? "together" : "" %> by <span class="challenge-body-accent"><%= challenge.end %></span> </div>
+            <div class="challege-body"> <%= challenge.description.html_safe %> </div>
+            <progress class="progress" value="<%= challenge.challenge_type == false ? Challenge.hours_total(challenge.start, challenge.end, nil) : Challenge.hours_total(challenge.start, challenge.end, current_user) %>" max="<%= challenge.goal %>">15%</progress>
+            <div class="progress-text"><%= challenge.challenge_type == false ? Challenge.hours_total(challenge.start, challenge.end, nil) : Challenge.hours_total(challenge.start, challenge.end, current_user) %> out of <%= challenge.goal %> hours. Keep it up! </div>
+            <% if challenge.challenge_type == false %>
+                <div class="progress-text">You have contributed <span class="progress-text-secondary"><%= pluralize(Challenge.hours_total(challenge.start, challenge.end, current_user), 'hour') %></span></div>
+            <% end %>
+        </div>
+    </nav>
+<% end %>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a href="/">
+          <% if @interface.pictures.find_by_name("#{@interface.id}logo") %>
+              <%= image_tag @interface.pictures.find_by_name("#{@interface.id}logo").image.url, :class=> "navbar-image" %>
+          <% else %>
+              <%= image_tag "navbar_logo.png", :class=>"navbar-image" %>
+          <% end %>
+        </a>
+    </div>
+
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center; display: inline-flex;">
+        <% if @ifDashboard %>
+            <%= link_to "feed", which_feed, class: "navbar-item navbar-item-grey feedtab" %>
+            <%= link_to "dashboard", which_profile, class: "navbar-item navbar-item-selected"%>
+        <% elsif @ifFeed %>
+            <%= link_to "feed", which_feed, class: "navbar-item navbar-item-selected feedtab" %>
+            <%= link_to "dashboard", which_profile, class: "navbar-item navbar-item-grey" %>
+        <% else %>
+            <%= link_to "feed", which_feed, class: "navbar-item navbar-item-grey feedtab" %>
+            <%= link_to "dashboard", which_profile, class: "navbar-item navbar-item-grey" %>
+        <% end %>
+    </div>
+
+    <% if current_user.admin? && @ifDashboard%>
+        <div class="navbar-end">
+            <span class="tab"></span> 
+            <%= link_to "Assign Admin & Edit Interface", "/admin_settings", :class => 'navbar-item button assign-admin is-hidden-mobile'  %>
+            <span class="tab"></span>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-item button sign-in-button is-hidden-mobile'  %>
+        </div>
+    <% end %>
+</nav>

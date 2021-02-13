@@ -1,0 +1,9 @@
+{
+  "environment": "production",
+  "port": 443,
+  "daemonize": true,
+  "user": "root",
+  "ssl": true,
+  "ssl_certificate": "./config/certs/certificate.crt",
+  "ssl_certificate_key": "./config/certs/certificate.key"
+}

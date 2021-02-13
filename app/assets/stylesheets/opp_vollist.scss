@@ -1,0 +1,402 @@
+//STYLE FOR THE OPPORTUNITY SHOWPAGE AND VOLUNTEER LIST
+//AUTHOR: ZHICHEN GUO AND HERLEEN KAUR
+
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "set_color";
+
+// tabs
+.tiny-tab {
+    margin-left: 5px;
+}
+
+.small-tab {
+    margin-left: 10px;
+}
+
+.medium-tab {
+    margin-left: 15px;
+}
+
+.large-tab {
+    margin-left: 30px;
+}
+
+.view-volunteer-profile {
+    border-radius: $button-round;
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+    color: white !important;
+
+    font-family: $family-secondary;
+    font-size: 15px;
+    float: right;
+
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 369px){
+  .viewinfo{
+    display: inline-grid;
+    width: 100%;
+    justify-items: center;
+
+    div{
+      text-align: center;
+    }
+  }
+
+  .view-volunteer-profile{
+    margin: 0;
+  }
+}
+
+.view-volunteer-name {
+    font-size: 18px;
+    text-align: left;
+    font-weight: bold;
+
+    color: $main-color;
+}
+
+.view-volunteer-email {
+    font-size: 16px;
+    text-align: left;
+    font-weight: bold;
+
+    color: $grey-dark;
+}
+
+.approved-tag {
+    background-color: $accent-color !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $accent-color;
+    border-style: solid;
+
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.approved-tag-secondary {
+    background-color: $accent-color !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $accent-color;
+    border-style: solid;
+
+    font-weight: 500;
+    margin-left: 63px;
+}
+
+.unapprove-volunteer-link {
+    font-size: 13px;
+    float: right;
+    color: $main-color;
+    font-style: italic;
+
+    &:hover {
+        cursor: pointer;
+        color: $secondary-color;
+    }
+}
+
+.unapproved-tag {
+    background-color: $grey-extra-dark !important;
+    color: white !important;
+    font-style: italic;
+
+    border-width: 1px;
+    border-color: $grey-extra-dark;
+    border-style: solid;
+
+    font-weight: 500;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: rgba( $accent-color, .7 ) !important;
+        border-color: rgba( $accent-color, .7 ) !important;
+    }
+}
+
+.unapproved-tag-no-click {
+    background-color: $grey-extra-dark !important;
+    color: white !important;
+
+    border-width: 1px;
+    border-color: $grey-extra-dark;
+    border-style: solid;
+
+    font-weight: 500;
+}
+
+.feature-button {
+    padding: 5px 30px;
+
+    border-radius: $button-round !important;
+    background-color: $grey-dark;
+    border-color: $grey-dark !important;
+    color: white !important;
+
+    font-family: $family-secondary;
+    font-size: 16px;
+
+    text-align: center;
+    float: left;
+
+    &:hover {
+        cursor: pointer;
+
+        background-color: rgba( $secondary-color, .7 );
+        color: white;
+
+        border-width: 1px;
+        border-color: rgba( $secondary-color, .7 );
+        border-style: solid;
+    }
+}
+
+.under-sign-up-text {
+    font-size: 12px;
+    color: $grey-extra-dark;
+    font-style: italic;
+
+    float:right;
+    display: none;
+}
+
+.right-text {
+    margin-top: 40px;
+    padding: 20px;
+    border-left: 2px $grey-light solid;
+
+    *{
+        font-family: $family-secondary;
+        list-style-position: inside;
+    }
+    ul{
+        list-style-type: disc;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 600;
+        color: $grey-extra-dark;
+    }
+    .right-text-blue {
+        p {
+            color: $secondary-color;
+            margin-bottom: 5px !important;
+        }
+    }
+}
+
+.right-text-blue {
+    font-size: 14px;
+    font-family: $family-secondary;
+    font-weight: 600;
+
+    color: $secondary-color;
+}
+.right-text-pink {
+    font-size: 15px;
+    font-family: $family-secondary;
+    font-weight: 600;
+
+    color: $accent-color;
+}
+
+.right-button-clicked {
+    background-color: $accent-color !important;
+    border-color: $accent-color !important;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.posting-container {
+    background-color: white;
+    margin: 20px;
+    padding: 30px;
+
+    .posting-arrow {
+        font-size: 20px;
+        color: $main-color;
+
+        float: left;
+
+        &:hover {
+            cursor: pointer;
+            color: $secondary-color;
+        }
+    }
+
+    .posting-title {
+        font-family: $family-primary;
+        font-weight: bold;
+        font-size: $font-30;
+        line-height: 40px;
+
+        margin: 0;
+        color: $main-color;
+    }
+
+    .posting-subtitle {
+        font-family: $family-secondary;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 40px;
+
+        margin: 0;
+        color: $accent-color;
+    }
+
+    .posting-tagbox {
+        margin: 10px 0;
+
+        .posting-tag {
+            background-color: transparent;
+            color: $accent-color;
+
+            border-width: 1px;
+            border-color: $accent-color;
+            border-style: solid;
+
+            font-family: $family-primary;
+            font-weight: 500;
+        }
+    }
+
+    .posting-text-bold {
+        font-family: $family-secondary;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    .posting-text-bold-pink {
+        font-family: $family-secondary;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 20px;
+        color: $accent-color;
+    }
+
+    .posting-text {
+        margin-top: 10px;
+        font-family: $family-secondary;
+        font-size: 16px;
+        *{
+            font-family: $family-secondary;
+            list-style-position: inside;
+        }
+        ul{
+            list-style-type: disc;
+        }
+    }
+
+    .right-column {
+        margin-left: 10px;
+        padding: 20px;
+
+        .right-button {
+            padding: 5px 30px;
+
+            border-radius: $button-round;
+            background-color: $grey-dark;
+            border-color: $grey-dark;
+            color: white;
+
+            font-family: $family-secondary;
+            font-size: 16px;
+
+            text-align: center;
+            float:right;
+
+            &:hover {
+                cursor: pointer;
+
+                background-color: rgba( $accent-color, .7 ) !important;
+                color: white;
+
+                border-width: 1px;
+                border-color: rgba( $accent-color, .7 ) !important;
+                border-style: solid;
+            }
+        }
+
+        &-featured-button {
+            padding-left: 20px;
+        }
+    }
+}
+
+.light-blue-links {
+    font-weight: 600;
+    font-family: $family-secondary;
+    text-decoration: none !important;
+    .a {
+        color: $secondary-color;
+    }
+    a:link {
+        color: $secondary-color;
+    }
+    a:visited {
+        color: $secondary-color;
+    }
+    a:hover {
+        color: $main-color;
+    }
+    a:active {
+        color: $main-color;
+    }
+}
+
+@media only screen and (min-width: 770px) and (max-width: 914px) {
+    .posting-container{
+        padding-right: 75px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .posting-arrow{
+        margin-left: -8px;
+        padding-right: 8px;
+    }
+
+    .posting-container .right-column .right-button, .under-sign-up-text{
+        float: none;
+    }
+
+    .right-text{
+        margin: 0;
+        padding: 0;
+        border-left: none;
+
+        p{
+            margin-bottom: 0 !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    .posting-title{
+        font-size: 20px;
+        text-align: center;
+        line-height: normal;
+        margin: -5px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .posting-container{
+      margin: 0;
+      padding: 15px;
+      padding-top: 10px;
+    }
+}

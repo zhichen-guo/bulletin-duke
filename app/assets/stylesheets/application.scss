@@ -1,0 +1,226 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+
+@import "set_color";
+
+* {
+    font-family: $family-primary;
+}
+
+// grey background
+.grey-background {
+    background-color: $grey-light;
+}
+
+.blue-background {
+    background-color: $main-color;
+}
+
+.mce-notification {
+    display: none !important;
+}
+
+.section{
+  padding-top: 1rem !important;
+}
+@media only screen and (max-width: 480px) {
+  .section{
+    padding: 0 !important;
+  }
+}
+
+// centers image
+.has-image-centered {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+// tab!!
+.tab {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+// nav bar
+.navbar {
+    background-color: $grey-light !important;
+
+    .navbar-title {
+        font-size: $font-20;
+        font-weight: bold;
+        color: $main-color;
+    }
+
+    .navbar-item-grey {
+        font-family: $family-secondary;
+        font-size: 18px;
+        font-weight: bold;
+        color: $grey-dark;
+        float: right;
+    }
+
+    .navbar-item-selected {
+      font-family: $family-secondary;
+      font-size: 18px;
+      font-weight: bold;
+      color: $main-color;
+    }
+
+    .navbar-end{
+      justify-content: flex-end;
+      align-items: stretch;
+      display: flex;
+      width: 10%;
+      margin: 0;
+      margin-right: 10px;
+      float: right;
+    }
+
+    .navbar-brand{
+      align-items: stretch;
+      display: inline-flex;
+      flex-shrink: 0;
+      min-height: 3.25rem;
+      justify-content: flex-start;
+    }
+}
+.navbar-image {
+    height: 25px;
+    width: 161px;
+    margin-top: 14px;
+    margin-left: 5px;
+}
+@media only screen and (max-width: 630px) {
+  .navbar-image {
+      height: 18px;
+      width: 116px;
+      margin-top: 22px;
+      margin-right: 10px;
+
+  }
+}
+
+.navbar-item:hover {
+    background-color: $grey-light !important;
+    color: $secondary-color !important;
+}
+
+.navbar-right {
+    float:right;
+}
+
+//CHALLENGES
+.challenge-nav {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0px 5px 1rem 5px;
+    padding: 15px;
+
+    color: $grey-extra-dark;
+    font-size: 15px;
+
+    .challenge-title {
+        font-size: 18px;
+        color: $main-color;
+        font-family: $family-secondary;
+        font-weight: bold;
+    }
+    .challenge-body {
+        font-family: $family-secondary;
+        font-weight: bold;
+    }
+    .challenge-body-accent {
+        color: $accent-color; 
+        font-family: $family-secondary;
+        font-weight: bold;
+    }
+    .progress {
+        $progress-bar-background-color: $grey-light !important;
+        $progress-value-background-color: $grey-extra-dark !important;
+        margin: 10px 0px !important;
+    }
+    .progress-text {
+        color: $accent-color;
+        font-weight: bold;
+        text-align: center;
+        font-family: $family-secondary;
+    }
+    .progress-text-secondary {
+        color: $secondary-color;
+        font-weight: bold;
+        text-align: center;
+        font-family: $family-secondary;
+    }
+}
+
+//UNIMPLEMENTED FEATURE! FOUND IN _volunteer.html.erb PARTIAL
+//CODE FOUND ON TOP OF PARTIAL, COMMENTED OUT
+.org-volunteer-sort {
+    font-size: 18px;
+    text-align: center;
+    margin: 10px;
+
+    .sort-blue {
+        font-family: $family-secondary;
+        color: $main-color;
+        font-weight: 600;
+        margin: 0 15px 0 15px;
+    }
+    .sort-item {
+        font-family: $family-secondary;
+        color: $grey-dark;
+        margin: 0 15px 0 15px;
+    }
+}
+//END OF UNIMPLEMENTED FEATURE
+
+//UNIMPLEMENTED FEATURE
+.thumb-icon-posting {
+    color: $grey-dark;
+    border: 4px solid $grey-dark;
+    border-radius: 10px;
+    padding: 3px 6px;
+
+    float: right;
+
+    font-size: 30px;
+    font-weight: 200;
+
+    &:hover {
+        cursor:pointer;
+    }
+}
+.thumb-icon-posting-check {
+    color: white;
+    background-color: $main-color;
+    border: 4px solid $main-color;
+    border-radius: 10px;
+    padding: 3px 6px;
+
+    float: right;
+
+    font-size: 30px;
+    font-weight: 200;
+}
+.feed-posting-thumb-text {
+    font-size: 14px;
+}
+
+.footimg{
+  height: 70px !important;
+}
+//END OF UNIMPLEMENTED FEATURE
